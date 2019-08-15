@@ -32,9 +32,13 @@ class CRF(nn.Module):
         for k in kwargs:
             self.__setattr__(k, kwargs[k])
         self.START_TAG_IDX, self.END_TAG_IDX = -2, -1
-        init_transitions = torch.zeros(self.target_size+2, self.target_size+2)
+
+        # init_transitions = torch.zeros(self.target_size+2, self.target_size+2)
+        init_transitions = torch.ones(self.target_size +2, self.target_size +2) * 1/(self.target_size +2)
+
         init_transitions[:, self.START_TAG_IDX] = -1000.
         init_transitions[self.END_TAG_IDX, :] = -1000.
+
         if self.use_cuda:
             init_transitions = init_transitions.cuda()
         self.transitions = nn.Parameter(init_transitions)
@@ -218,10 +222,12 @@ class CRF(nn.Module):
         batch_size = feats.size(0)
         mask = mask.byte()
         forward_score, scores = self._forward_alg(feats, mask)
+
         gold_score = self._score_sentence(scores, mask, tags)
+
         if self.average_batch:
             return (forward_score - gold_score) / batch_size
-        return forward_score - gold_score
+        return forward_score - gold_score, scores
 
 
 
