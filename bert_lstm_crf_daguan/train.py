@@ -189,7 +189,7 @@ for epoch in range(epochs):
     if f > best_f:
         best_f = f
         _, _, _, _ = evaluate_test(model, test_loader,loss.item())
-        model_name  = save_model_dir + '.' + str(best_f) + ".pkl"
+        model_name  = save_model_dir + '.' + str(float('%.2f' % best_f)) + ".pkl"
         torch.save(model.state_dict(), model_name)
 
 
