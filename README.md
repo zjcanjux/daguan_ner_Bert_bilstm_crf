@@ -11,7 +11,7 @@ bert的预训练可以使用 https://github.com/circlePi/Pretraining-Yourself-Be
 整体效果受模型超参和bert本身的训练效果所致，这个模型的最好结果，也还没跑完。
 
 我自己训练的bert可以从以下链接下载
-链接:https://pan.baidu.com/s/113LG-wt9gIGDbRkaqd53Ww  密码:m891
+链接:https://pan.baidu.com/s/1aPxmC2pU-lUO_ffOqtDNvA  密码:dw65
 后面，训练出更好的bert会继续放出链接。
 
 有问题欢迎交流。
