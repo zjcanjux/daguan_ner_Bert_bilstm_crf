@@ -135,7 +135,7 @@ def evaluate_test(medel,test_loader,dev_f):
         pred_label,gold_label = recover_label(pred, gold, l2i_dic,i2l_dic)
         pred_label_2 = [t[1:] for t in pred_label]
         gold_label_2 = [t[1:] for t in gold_label]
-        fw = open('data/predict_result'+str(dev_f)+'bert.txt','w')
+        fw = open('data/predict_result'+str(float('%.3f'%dev_f))+'bert.txt','w')
         print(pred_label_2[0],len(pred_label))
         print(gold_label_2[0])
         for i in pred_label_2:
@@ -154,7 +154,7 @@ def evaluate_test(medel,test_loader,dev_f):
 ########加载模型
 
 
-model = BERT_LSTM_CRF('data/my_bert', tagset_size, 768, 200, 1,
+model = BERT_LSTM_CRF('data/my_bert', tagset_size, 768, 200, 2,
                       dropout_ratio=0.5, dropout1=0.5, use_cuda = use_cuda)
 
 if use_cuda:
