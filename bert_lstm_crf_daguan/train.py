@@ -191,6 +191,7 @@ for epoch in range(epochs):
         _, _, _, _ = evaluate_test(model, test_loader,loss.item())
         model_name  = save_model_dir + '.' + str(float('%.3f' % best_f)) + ".pkl"
         torch.save(model.state_dict(), model_name)
+        # test
 
 
 
