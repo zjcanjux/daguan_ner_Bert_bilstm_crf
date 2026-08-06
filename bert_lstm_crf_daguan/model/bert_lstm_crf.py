@@ -57,7 +57,7 @@ class BERT_LSTM_CRF(nn.Module):
 
     def forward(self, sentence, masks):
         lstm_feats = self.get_output_score(sentence)
-        scores, tag_seq = self.crf._viterbi_decode(lstm_feats, masks.byte())
+        scores, tag_seq = self.crf._viterbi_decode(lstm_feats, masks.bool())
         return tag_seq
 
     def neg_log_likelihood_loss(self, sentence, mask, tags):
